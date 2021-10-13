@@ -31,10 +31,13 @@ btn = [[InlineKeyboardButton('🍿 Channel', url="https://telegram.me/MyTestBotZ
   
 START = """Hello there👋, \nI am a __**Subtitle Downloader Bot**__.\nGive me a Movie/Series name and I will fetch it from __**Subscene**__.\n\n__**Made with ♥️ by @OO7ROBot :**__"""
 
-HELP = """How to USE meh**...\n➢ __Send me any Movie/Series name and I will__ \n
+HELP = """**How to USE meh**...
+\n➢ __Send me any Movie/Series name and I will__ \n
 __➢ i will Search for you it on `Subscene.com`\n
 ➢ Let you choose your preferable language.\n
-➢ Download the subtitle, unzip and upload in `.srt/.ass` format__\n\n**Made with ♥️ by @MyTestBotZ**
+➢ Download the subtitle, unzip and upload in `.srt/.ass` format__
+
+**Made with ♥️ by @MyTestBotZ**
 """
 
 ABOUT = """--**About Me**-- 😎
