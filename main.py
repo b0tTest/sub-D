@@ -321,7 +321,7 @@ def download(client, callback_query):
         a = glob.glob(f'./{directory}/*srt', recursive=True)
         for file in a:
             app.send_document(document=file,
-                              caption=f"{filename}",
+                              caption=f"**{filename}\n\n© @Get_SubtitleBot**",
                               chat_id=callback_query.message.chat.id,
                               parse_mode='md')
         app.delete_messages(chat_id=callback_query.message.chat.id,
@@ -330,7 +330,7 @@ def download(client, callback_query):
         a = glob.glob(f'./{directory}/*', recursive=True)
         for file in a:
             app.send_document(document=file,
-                              caption=f"{filename}",
+                              caption=f"**{filename}\n\n© @Get_SubtitleBot**",
                               chat_id=callback_query.message.chat.id,
                               parse_mode='md')
         app.delete_messages(chat_id=callback_query.message.chat.id,
