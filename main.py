@@ -57,6 +57,56 @@ ABOUT = """--**About Me**-- 😎
 
 """
 
+START_B = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🍿 Channel', url="https://telegram.me/MyTestBotZ"),InlineKeyboardButton('🍿 BotsList', url="https://t.me/mybotzlist")],
+        [
+        InlineKeyboardButton('⚙ Help', callback_data='help'),
+        InlineKeyboardButton('💭 About', callback_data='about'),
+        InlineKeyboardButton('⛔ Close', callback_data='close')
+        ]]
+    )
+
+HELP_B = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🏘 Home', callback_data='home'),
+        InlineKeyboardButton('💭 About', callback_data='about'),
+        InlineKeyboardButton('⛔ Close', callback_data='close')
+        ]]
+    )
+
+ABOUT_B = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🏘 Home', callback_data='home'),
+        InlineKeyboardButton('⚙️ Help', callback_data='help'),
+        InlineKeyboardButton('⛔ Close', callback_data='close')
+        ]]
+    )
+
+@app.on_callback_query()
+async def cb_handler(bot, update):
+    if update.data == "home":
+        await update.message.edit_text(
+            text=START,
+            reply_markup=START_B,
+            disable_web_page_preview=True
+        )
+    elif update.data == "help":
+        await update.message.edit_text(
+            text=HELP,
+            reply_markup=HELP_B,
+            disable_web_page_preview=True
+        )
+    elif update.data == "about":
+        await update.message.edit_text(
+            text=ABOUT,
+            reply_markup=ABOUT_B,
+            disable_web_page_preview=True
+        )
+    else:
+        await update.message.delete()
+
+###########################################
 @app.on_message(filters.command('start'))
 def start(client,message):
     reply_markup = InlineKeyboardMarkup(btn)
