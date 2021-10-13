@@ -22,7 +22,7 @@ bot_token = os.environ.get('BOT_TOKEN')
 api = int(os.environ.get('API_KEY'))
 hash = os.environ.get('API_HASH')
 workers = int(os.environ.get('WORKERS'))
-app = Client("JayBeeSubtitleDL", bot_token=bot_token, api_id=api, api_hash=hash, workers=workers)
+app = Client("SubtitleDLbot", bot_token=bot_token, api_id=api, api_hash=hash, workers=workers)
 cuttly = os.environ.get('CUTTLY_API')
 
 timestarted = timedelta(seconds=int(time.time()))
@@ -30,19 +30,17 @@ timestarted = timedelta(seconds=int(time.time()))
 
 @app.on_message(filters.command('start'))
 def start(client,message):
-    kb = [[InlineKeyboardButton('Channel 🛡', url="https://t.me/JayBeeBots"),InlineKeyboardButton('Support Group 🔰', url="https://t.me/JayBeeBotsSupport")]]
+    kb = [[InlineKeyboardButton('🍿 Channel', url="https://telegram.me/MyTestBotZ"),InlineKeyboardButton('🍿 BotsList', url="https://t.me/mybotzlist")]]
     reply_markup = InlineKeyboardMarkup(kb)
     app.send_message(chat_id=message.from_user.id, text=f"Hello there, I am a __**Subtitle Downloader Bot**__.\nGive me a Movie/Series name and I will fetch it from __**Subscene**__.\n\n"
-                                                        "__**Developer :**__ __@JayBeeDev__\n"
-                                                        "__**Language :**__ __Python__\n"
-                                                        "__**Framework :**__ __🔥 Pyrogram__",
+                                                        "__**Made with ♥️ by @OO7ROBot :**__",
                      parse_mode='md',
                      reply_markup=reply_markup)
 
 @app.on_message(filters.command('help'))
 def help(client,message):
-    url = [[InlineKeyboardButton(f"PayPal Me ❤️", url=f"https://paypal.me/JayBeeDev")],
-           [InlineKeyboardButton(f"Buy Me A Coffee ☕️", url=f"https://buymeacoffee.com/JayBee.Dev")]]
+    url = [[InlineKeyboardButton(f"Channel❤️", url=f"https://t.me/MyTestBotZ")],
+           [InlineKeyboardButton(f"OtherBots🍿", url=f"https://t.me/mybotzlist")]]
     reply_markup = InlineKeyboardMarkup(url)
     message.reply_text(reply_to_message_id= message.message_id,text=f"Send me any Movie/Series name and I will -\n"
     f"__ * Search for it on `Subscene.com`\n"
