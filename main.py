@@ -90,7 +90,7 @@ def search(client, message):
     reply_markup = InlineKeyboardMarkup(kb)
     app.send_message(chat_id=message.chat.id,
                      text=f"__Showing Result for **{query}**\n"
-                     f"Choose your desired Movie/Series:__",
+                     f"\nChoose your desired Movie/Series:__",
                      parse_mode='md',
                      reply_markup=reply_markup)
 
@@ -172,13 +172,14 @@ def searchprev(client, callback_query):
 def chooselang(client, callback_query):
     sublink = callback_query.data.split('*')[-1]
     kb = [[InlineKeyboardButton("English 🇬🇧", callback_data=f'PREL*english*{sublink}')],
+          [InlineKeyboardButton("Malayalam ♥️", callback_data=f'PREL*malayalam*{sublink}')],
           [InlineKeyboardButton("Bengali 🇧🇩", callback_data=f'PREL*bengali*{sublink}')],
           [InlineKeyboardButton("Hindi 🇮🇳", callback_data=f'PRE*hindi*{sublink}')],
           [InlineKeyboardButton("Indonesian 🇮🇩", callback_data=f'PREL*indonesian*{sublink}')]]
     reply_markup = InlineKeyboardMarkup(kb)
     app.edit_message_text(chat_id=callback_query.message.chat.id,
                           message_id=callback_query.message.message_id,
-                          text=f"__Select a Subtitle Language__",
+                          text=f"__Select a Subtitle Language__⤵️ \n\n© MyTestBotZ",
                           parse_mode='md',
                           reply_markup=reply_markup)
 
@@ -255,9 +256,9 @@ def subdetails(client, callback_query):
     data = requests.get(f"https://cutt.ly/api/api.php?key={cuttly}&short={dload}").json()["url"]
     shortened_url = data["shortLink"]
 
-    kb = [[InlineKeyboardButton(f"Download", callback_data=f'DOWNLOAD*{shortened_url}')]]
+    kb = [[InlineKeyboardButton(f"💾 Download", callback_data=f'DOWNLOAD*{shortened_url}')]]
     reply_markup = InlineKeyboardMarkup(kb)
-    app.send_photo(caption=f'__{subtext}__',
+    app.send_photo(caption=f'__{subtext}__\n\n**© @Get_Subtitlebot**',
                    photo=poster,
                    chat_id=callback_query.message.chat.id,
                    parse_mode='md',
@@ -386,7 +387,7 @@ def prevres(client, callback_query):
     reply_markup = InlineKeyboardMarkup(kb)
     app.edit_message_text(chat_id=callback_query.message.chat.id,
                               message_id=callback_query.message.message_id,
-                              text=f"__Select a Subtitle__",
+                              text=f"__Select a Subtitle__\n\n**© @MyTestBotZ**",
                               parse_mode='md',
                               reply_markup=reply_markup)
 
