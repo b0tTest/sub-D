@@ -112,17 +112,17 @@ def start(client,message):
     reply_markup = InlineKeyboardMarkup(btn)
     app.send_message(chat_id=message.from_user.id, text=START,
                      parse_mode='md',
-                     reply_markup=reply_markup)
+                     reply_markup=START_B)
 
 @app.on_message(filters.command('help'))
 def help(client,message):
     reply_markup = InlineKeyboardMarkup(btn)
-    message.reply_text(reply_to_message_id= message.message_id,text=HELP, parse_mode='md', reply_markup=reply_markup)
+    message.reply_text(reply_to_message_id= message.message_id,text=HELP, parse_mode='md', reply_markup=HELP_B)
 
 @app.on_message(filters.command('about'))
 def about(client,message):
     reply_markup = InlineKeyboardMarkup(btn)
-    message.reply_text(reply_to_message_id= message.message_id,text=ABOUT, parse_mode='md', reply_markup=reply_markup)
+    message.reply_text(reply_to_message_id= message.message_id,text=ABOUT, parse_mode='md', reply_markup=ABOUT_B)
 
 
 @app.on_message(filters.command('uptime'))
