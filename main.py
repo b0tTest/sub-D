@@ -199,8 +199,10 @@ def chooselang(client, callback_query):
     kb = [[InlineKeyboardButton("English 🇬🇧", callback_data=f'PREL*english*{sublink}')],
           [InlineKeyboardButton("Malayalam ♥️", callback_data=f'PREL*malayalam*{sublink}')],
           [InlineKeyboardButton("Bengali 🇧🇩", callback_data=f'PREL*bengali*{sublink}')],
-          [InlineKeyboardButton("Hindi 🇮🇳", callback_data=f'PRE*hindi*{sublink}')],
-          [InlineKeyboardButton("Arabic ❣️", callback_data=f'PRE*arabic*{sublink}')],
+          [InlineKeyboardButton("Hindi 🇮🇳", callback_data=f'PREL*hindi*{sublink}')],
+          [InlineKeyboardButton("Tamil 🇮🇳", callback_data=f'PREL*tamil*{sublink}')],
+          [InlineKeyboardButton("Arabic ❣️", callback_data=f'PREL*arabic*{sublink}')],
+          [InlineKeyboardButton("Spanish 🇪🇸", callback_data=f'PREL*spanish*{sublink}')],
           [InlineKeyboardButton("Indonesian 🇮🇩", callback_data=f'PREL*indonesian*{sublink}')]]
     reply_markup = InlineKeyboardMarkup(kb)
     app.edit_message_text(chat_id=callback_query.message.chat.id,
