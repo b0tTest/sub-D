@@ -72,7 +72,30 @@ FORCE_SUBSCRIBE_TEXT = "**Sorry Dear You Must Join My Updates Channel for using 
 
         
  
-###########################################
+################################################
+@app.on_message(filters.text & filters.private)
+async def telegraph_upload(bot, update):
+    if UPDATE_CHANNEL:
+        try:
+            user = await bot.get_chat_member(UPDATE_CHANNEL, update.chat.id)
+            if user.status == "kicked":
+                await update.reply_text(text="You are banned!")
+                return
+        except UserNotParticipant:
+            await update.reply_text(
+		  text=FORCE_SUBSCRIBE_TEXT,
+		  reply_markup=InlineKeyboardMarkup(
+			  [[InlineKeyboardButton(text="⚙ Join Updates Channel ⚙", url=f"https://telegram.me/{UPDATE_CHANNEL}")]]
+		  )
+	    )
+            return
+        except Exception as error:
+            print(error)
+            await update.reply_text(text="Something wrong. Contact <a href='https://telegram.me/oo7robot'>Developer</a>.", disable_web_page_preview=True)
+            return
+
+###### ----------------------------- ######
+
 @app.on_message(filters.command('start'))
 def start(client,message):
     reply_markup = InlineKeyboardMarkup(btn)
@@ -100,26 +123,7 @@ def uptime(client, message):
 
 
 @app.on_message(filters.text)
-def search(client, message):
-    if UPDATE_CHANNEL:
-        try:
-            user = await client.get_chat_member(UPDATE_CHANNEL, update.chat.id)
-            if user.status == "kicked":
-                await update.reply_text(text="You are banned!")
-                return
-        except UserNotParticipant:
-            await update.reply_text(
-		  text=FORCE_SUBSCRIBE_TEXT,
-		  reply_markup=InlineKeyboardMarkup(
-			  [[InlineKeyboardButton(text="⚙ Join Updates Channel ⚙", url=f"https://telegram.me/{UPDATE_CHANNEL}")]]
-		  )
-	    )
-            return
-        except Exception as error:
-            print(error)
-            await update.reply_text(text="Something wrong. Contact <a href='https://telegram.me/oo7robot'>Developer</a>.", disable_web_page_preview=True)
-            return
-          
+def search(client, message):     
     query = message.text.replace(" ", "+")
     data = {
         'query' : query,
