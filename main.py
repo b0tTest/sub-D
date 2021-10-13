@@ -29,25 +29,50 @@ timestarted = timedelta(seconds=int(time.time()))
 
 btn = [[InlineKeyboardButton('🍿 Channel', url="https://telegram.me/MyTestBotZ"),InlineKeyboardButton('🍿 BotsList', url="https://t.me/mybotzlist")]]
   
+START = """Hello there👋, \nI am a __**Subtitle Downloader Bot**__.\nGive me a Movie/Series name and I will fetch it from __**Subscene**__.\n\n__**Made with ♥️ by @OO7ROBot :**__"""
+
+HELP = """How to USE meh**...\n➢ __Send me any Movie/Series name and I will__ \n
+__➢ i will Search for you it on `Subscene.com`\n
+➢ Let you choose your preferable language.\n
+➢ Download the subtitle, unzip and upload in `.srt/.ass` format__\n\n**Made with ♥️ by @MyTestBotZ**
+"""
+
+ABOUT = """--**About Me**-- 😎
+
+🤖 **Name :** [Subtitle Downloader](https://telegram.me/Get_subtitlebot)
+
+👨‍💻 **Developer :** [@OO7ROBot](https://telegram.me/oo7robot)
+
+📢 **Channel :** [MyTestBotZ](https://telegram.me/mytestbotz)
+
+👥 **Bots List :** [My Botz List](https://telegram.me/mybotzlist)
+
+🌐 **Source :** [ Click Here](https://github.com/OO7ROBOT) (Prvt)
+
+📝 **Language :** [Python3](https://python.org)
+
+🧰 **Framework :** [Pyrogram](https://pyrogram.org)
+
+📡 **Server :** [Heroku](https://heroku.com)
+
+"""
 
 @app.on_message(filters.command('start'))
 def start(client,message):
-    kb = [[InlineKeyboardButton('🍿 Channel', url="https://telegram.me/MyTestBotZ"),InlineKeyboardButton('🍿 BotsList', url="https://t.me/mybotzlist")]]
     reply_markup = InlineKeyboardMarkup(btn)
-    app.send_message(chat_id=message.from_user.id, text=f"Hello there👋, \nI am a __**Subtitle Downloader Bot**__.\nGive me a Movie/Series name and I will fetch it from __**Subscene**__.\n\n"
-                                                        "__**Made with ♥️ by @OO7ROBot :**__",
+    app.send_message(chat_id=message.from_user.id, text=START,
                      parse_mode='md',
                      reply_markup=reply_markup)
 
 @app.on_message(filters.command('help'))
 def help(client,message):
-    url = [[InlineKeyboardButton(f"Channel❤️", url=f"https://t.me/MyTestBotZ")],
-           [InlineKeyboardButton(f"OtherBots🍿", url=f"https://t.me/mybotzlist")]]
     reply_markup = InlineKeyboardMarkup(btn)
-    message.reply_text(reply_to_message_id= message.message_id,text=f"**How to USE meh**...\n➢ __Send me any Movie/Series name and I will__ -\n"
-    f"__➢ i will Search for you it on `Subscene.com`\n"
-    f"➢ Let you choose your preferable language.\n"
-    f"➢ Download the subtitle, unzip and upload in `.srt/.ass` format__\n\n**Made with ♥️ by @MyTestBotZ**", parse_mode='md', reply_markup=reply_markup)
+    message.reply_text(reply_to_message_id= message.message_id,text=HELP, parse_mode='md', reply_markup=reply_markup)
+
+@app.on_message(filters.command('about'))
+def about(client,message):
+    reply_markup = InlineKeyboardMarkup(btn)
+    message.reply_text(reply_to_message_id= message.message_id,text=ABOUT, parse_mode='md', reply_markup=reply_markup)
 
 
 @app.on_message(filters.command('uptime'))
