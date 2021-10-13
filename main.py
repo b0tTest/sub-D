@@ -17,6 +17,9 @@ from datetime import timedelta
 from dotenv import load_dotenv
 import zipfile
 
+from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid, UserNotParticipant, UserBannedInChannel
+
+
 load_dotenv()
 bot_token = os.environ.get('BOT_TOKEN')
 api = int(os.environ.get('API_KEY'))
@@ -100,7 +103,7 @@ def uptime(client, message):
 def search(client, message):
     if UPDATE_CHANNEL:
         try:
-            user = await bot.get_chat_member(UPDATE_CHANNEL, update.chat.id)
+            user = await client.get_chat_member(UPDATE_CHANNEL, update.chat.id)
             if user.status == "kicked":
                 await update.reply_text(text="You are banned!")
                 return
