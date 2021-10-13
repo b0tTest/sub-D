@@ -27,12 +27,14 @@ cuttly = os.environ.get('CUTTLY_API')
 
 timestarted = timedelta(seconds=int(time.time()))
 
+btn = [[InlineKeyboardButton('🍿 Channel', url="https://telegram.me/MyTestBotZ"),InlineKeyboardButton('🍿 BotsList', url="https://t.me/mybotzlist")]]
+  
 
 @app.on_message(filters.command('start'))
 def start(client,message):
     kb = [[InlineKeyboardButton('🍿 Channel', url="https://telegram.me/MyTestBotZ"),InlineKeyboardButton('🍿 BotsList', url="https://t.me/mybotzlist")]]
-    reply_markup = InlineKeyboardMarkup(kb)
-    app.send_message(chat_id=message.from_user.id, text=f"Hello there, I am a __**Subtitle Downloader Bot**__.\nGive me a Movie/Series name and I will fetch it from __**Subscene**__.\n\n"
+    reply_markup = InlineKeyboardMarkup(btn)
+    app.send_message(chat_id=message.from_user.id, text=f"Hello there👋, \nI am a __**Subtitle Downloader Bot**__.\nGive me a Movie/Series name and I will fetch it from __**Subscene**__.\n\n"
                                                         "__**Made with ♥️ by @OO7ROBot :**__",
                      parse_mode='md',
                      reply_markup=reply_markup)
@@ -41,11 +43,11 @@ def start(client,message):
 def help(client,message):
     url = [[InlineKeyboardButton(f"Channel❤️", url=f"https://t.me/MyTestBotZ")],
            [InlineKeyboardButton(f"OtherBots🍿", url=f"https://t.me/mybotzlist")]]
-    reply_markup = InlineKeyboardMarkup(url)
-    message.reply_text(reply_to_message_id= message.message_id,text=f"Send me any Movie/Series name and I will -\n"
-    f"__ * Search for it on `Subscene.com`\n"
-    f" * Let you choose your preferable language.\n"
-    f" * Download the subtitle, unzip and upload in `.srt/.ass` format__", parse_mode='md', reply_markup=reply_markup)
+    reply_markup = InlineKeyboardMarkup(btn)
+    message.reply_text(reply_to_message_id= message.message_id,text=f"**How to USE meh**...\n➢ __Send me any Movie/Series name and I will__ -\n"
+    f"__➢ i will Search for you it on `Subscene.com`\n"
+    f"➢ Let you choose your preferable language.\n"
+    f"➢ Download the subtitle, unzip and upload in `.srt/.ass` format__\n\n**Made with ♥️ by @MyTestBotZ**", parse_mode='md', reply_markup=reply_markup)
 
 
 @app.on_message(filters.command('uptime'))
