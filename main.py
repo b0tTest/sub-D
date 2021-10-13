@@ -79,7 +79,7 @@ def help(client,message):
 @app.on_message(filters.command('about'))
 def about(client,message):
     reply_markup = InlineKeyboardMarkup(btn)
-    message.reply_text(reply_to_message_id= message.message_id,text=ABOUT, parse_mode='md', reply_markup=reply_markup)
+    message.reply_text(reply_to_message_id= message.message_id,text=ABOUT, parse_mode='md', reply_markup=reply_markup, disable_web_page_preview=True)
 
 
 @app.on_message(filters.command('uptime'))
