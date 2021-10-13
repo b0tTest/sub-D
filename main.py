@@ -200,11 +200,12 @@ def chooselang(client, callback_query):
           [InlineKeyboardButton("Malayalam ♥️", callback_data=f'PREL*malayalam*{sublink}')],
           [InlineKeyboardButton("Bengali 🇧🇩", callback_data=f'PREL*bengali*{sublink}')],
           [InlineKeyboardButton("Hindi 🇮🇳", callback_data=f'PRE*hindi*{sublink}')],
+          [InlineKeyboardButton("Arabic ❣️", callback_data=f'PRE*arabic*{sublink}')],
           [InlineKeyboardButton("Indonesian 🇮🇩", callback_data=f'PREL*indonesian*{sublink}')]]
     reply_markup = InlineKeyboardMarkup(kb)
     app.edit_message_text(chat_id=callback_query.message.chat.id,
                           message_id=callback_query.message.message_id,
-                          text=f"__Select a Subtitle Language__⤵️ \n\n© MyTestBotZ",
+                          text=f"__Select a Subtitle Language__⤵️ \n\n**© @MyTestBotZ**",
                           parse_mode='md',
                           reply_markup=reply_markup)
 
